@@ -1,1 +1,1 @@
-# Naive-Language-Classificator
+# Naive-Language-Classifier
