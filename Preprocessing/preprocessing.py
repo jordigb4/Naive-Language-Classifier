@@ -14,6 +14,5 @@ def remove_digits(text):
 
 def concatenate_whitespaces(text):
     res = re.sub(r'\n','  ',re.sub(r'\t','',text))
-
     return res 
 print(repr(concatenate_whitespaces(remove_digits(spa_trn[:5000]))))
