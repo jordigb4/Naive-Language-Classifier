@@ -5,7 +5,7 @@ from math import log, exp
 
 class LanguageIdentifier:
 
-    def __init__(self, smoothing = "Lidstone", alpha = 0.5):
+    def __init__(self, smoothing = "Lidstone", alpha = 0.5)-> None:
      
         self.smoothing = smoothing
         if smoothing == "Lidstone":
@@ -53,7 +53,6 @@ class LanguageIdentifier:
 
         predicted = []
         for phrase in phrases:
-
             phrase_probs = [(language, self.likelihood(phrase, language)) for language in self.languages]
             pred = max(phrase_probs, key = lambda x: x[1])[0]
             predicted.append(self.languages_encoding[pred])
@@ -66,14 +65,14 @@ class LanguageIdentifier:
 
         finder = TrigramCollocationFinder.from_words(d)
         sum_logprobs = sum([c*log(self.LID_n_gram_likelihood(tr, language)) for tr, c in finder.ngram_fd.items()])
-        return exp(sum_logprobs)
+        return sum_logprobs
  
     def LID_n_gram_likelihood(self, tr, language):
         #Pre: tr is a tri-gram character; language is recognizable by the model
         #Return: MLE with LID smoothing of tr belong to 'language' based on training corpora
 
         ct_tr = self.get_count(tr, language)
-        total_ct = self.total_trigrams_corpora[language]
+        total_ct = self.total_trigrams_corpora[language] 
         return (ct_tr + self.alpha) / (total_ct + self.alpha*pow(24, 3))
 
     def get_count(self, tr, language):
@@ -83,6 +82,4 @@ class LanguageIdentifier:
         corpora = self.trigrams_corpora[language]
         ct = corpora.get(tr, 0) #if not found count is 0
         return ct
-
-LangId = LanguageIdentifier()
-pred = LangId.identify_language(f"corpora/spa_tst.txt")
+    

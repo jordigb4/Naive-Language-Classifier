@@ -1,13 +1,5 @@
 import re
 
-"""
-spa_path = 'corpora\spa_trn.txt'
-
-with open(spa_path, 'r', encoding='utf-8') as file:
-    
-    spa_trn = file.read()
-"""
-
 def remove_digits(text: str) -> str:
     #Return: the string of text without digits
 
@@ -29,8 +21,3 @@ def concatenate_whitespaces(text: str) -> str:
 
 def preprocessing(text:str) -> str:
     return concatenate_whitespaces(reduce_whitespaces(lower(remove_digits(text))))
-
-"""
-raw_text = preprocessing(spa_trn)
-print(raw_text[:5000])
-"""
