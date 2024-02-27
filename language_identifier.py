@@ -45,7 +45,6 @@ class LanguageIdentifier:
             count += c
         return tr_c, count
         
-    
     def identify_language(self, path):
 
         preprocessed_test = self.__read_corpora(path)
