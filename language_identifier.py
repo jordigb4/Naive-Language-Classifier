@@ -33,10 +33,12 @@ class LanguageIdentifier:
         return [tr for tr in finder.ngram_fd.items()]
     
     def identify_language(self,path):
-        actual = np.array()
         predicted = np.array()
-        correct = 0
 
         preprocessed_test = self.__read_corpora(path)
         phrases = preprocessed_test.split("  ")
 
+        for phrase in phrases:
+
+            finder = TrigramCollocationFinder.from_words(phrase)
+            trigrams = [tr for tr in finder.ngram_fd.items()]
