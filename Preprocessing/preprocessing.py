@@ -7,6 +7,7 @@ with open(spa_path, 'r', encoding='utf-8') as file:
     
     spa_trn = file.read()
 """
+
 def remove_digits(text: str) -> str:
     #Return: the string of text without digits
 
@@ -15,11 +16,11 @@ def remove_digits(text: str) -> str:
 def lower(text: str) -> str: 
     #Return: the lowercase string from str
 
-    return str.lower()
+    return text.lower()
 
 def reduce_whitespaces(text: str) -> str:
     #Return: string with only one whitespace between characters
-    return re.sub(r'\s+', ' ', str)
+    return re.sub(r'[ ]+', ' ', text)
 
 def concatenate_whitespaces(text: str) -> str:
     #Return: string with all the phrases concatenated with a double space in the middle
@@ -28,7 +29,6 @@ def concatenate_whitespaces(text: str) -> str:
 
 def preprocessing(text:str) -> str:
     return concatenate_whitespaces(reduce_whitespaces(lower(remove_digits(text))))
-
 
 """
 raw_text = preprocessing(spa_trn)
