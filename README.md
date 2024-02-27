@@ -1,5 +1,4 @@
 # Naive-Language-Classifier
-Short description of the project.
 
 <a name="readme-top"></a>
 
@@ -7,7 +6,7 @@ Short description of the project.
 <br />
 <div align="center">
   <a href="https://github.com/albertojc6/Naive-Language-Classifier">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
+    <img src="images/logo.png" alt="Logo" width="200" height="130">
   </a>
 
 <h3 align="center">European Language Identifier</h3>
