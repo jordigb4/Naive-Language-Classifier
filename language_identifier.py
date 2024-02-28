@@ -82,4 +82,4 @@ class LanguageIdentifier:
         corpora = self.trigrams_corpora[language]
         ct = corpora.get(tr, 0) #if not found count is 0
         return ct
-    
+        
