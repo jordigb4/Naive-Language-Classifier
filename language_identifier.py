@@ -6,17 +6,18 @@ from math import log, exp
 class LanguageIdentifier:
 
     def __init__(self, smoothing = "Lidstone", alpha = 0.5, delta = None)-> None:
-     
+
         self.smoothing = smoothing
-        if smoothing == "Lidstone":
-            self.alpha = alpha
-        if smoothing == "Abs_disc":
-            self.delta = delta
-            
         self.languages = ["deu", "eng", "fra", "ita", "nld", "spa"]
         self.languages_encoding = {"deu" : 0, "eng" : 1, "fra" : 2, "ita" : 3, "nld" : 4, "spa" : 5}
 
         self.__train()
+
+        if smoothing == "Lidstone":
+            self.alpha = alpha
+
+        if smoothing == "Abs_disc":
+            self.delta = delta if delta else (self.n1 / (self.n1 + 2 * self.n2))
 
     def __train(self):
         #Post: creates two attributes that keep training data features, i.e. the number of
@@ -72,7 +73,7 @@ class LanguageIdentifier:
         if self.smoothing == "Lidstone":
             sum_logprobs = sum([c*log(self.LID_n_gram_likelihood(tr, language)) for tr, c in finder.ngram_fd.items()])
         if self.smoothing == "Abs_disc":
-            sum_logprobs = sum([c*log(self.LID_n_gram_likelihood(tr, language)) for tr, c in finder.ngram_fd.items()])
+            sum_logprobs = sum([c*log(self.ABS_n_gram_likelihood(tr, language)) for tr, c in finder.ngram_fd.items()])
         return sum_logprobs
  
     def LID_n_gram_likelihood(self, tr, language):
@@ -86,14 +87,17 @@ class LanguageIdentifier:
     def ABS_n_gram_likelihood(self, tr, language):
         #Pre: tr is a tri-gram character; language is recognizable by the model
         #Return: MLE with ABS smoothing of tr belong to 'language' based on training corpora
-        d = self.__get_d(tr)
+    
+        d = self.delta
         ct_tr = self.get_count(tr, language)
-        total_ct = self.total_trigrams_corpora[language] 
-        not_total_ct = pow(24, 3) - total_ct
-        if ct_tr != 0: return ((ct_tr -d) / (total_ct))
-        else: return(((pow(24,3)-not_total_ct)*d)/(total_ct * not_total_ct)) 
-        
+        total_ct = self.total_trigrams_corpora[language] # nº of occurrences of trigrams in train
+        n_0_counts = pow(24, 3) - len(self.trigrams_corpora[language]) # nº of trigrams not seen = potential - seen different
 
+        if ct_tr > 0:
+            return ((ct_tr - d) / total_ct)
+        else:
+            return ((pow(24, 3) - n_0_counts) * d / n_0_counts) / total_ct
+        
     def get_count(self, tr, language):
         #Pre: tr is a tri-gram character; language is recognizable by the model
         #Return: count of tr in training corpora related to language
@@ -101,7 +105,3 @@ class LanguageIdentifier:
         corpora = self.trigrams_corpora[language]
         ct = corpora.get(tr, 0) #if not found count is 0
         return ct
-    
-    def __get_d(self):
-        if self.delta != None: return self.delta
-        return (self.n1 / (self.n1 + 2 * self.n2))
