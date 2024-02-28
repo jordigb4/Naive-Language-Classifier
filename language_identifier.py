@@ -42,7 +42,7 @@ class LanguageIdentifier:
         finder = TrigramCollocationFinder.from_words(corpora)
         tr_c = {}
         ct = 0
-        self.n1,self.n2 = 0
+        self.n1, self.n2 = 0, 0
         for tr, c in finder.ngram_fd.items():
             if c == 1: self.n1 += 1
             if c == 2: self.n2 += 1
