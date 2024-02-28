@@ -102,3 +102,6 @@ class LanguageIdentifier:
         ct = corpora.get(tr, 0) #if not found count is 0
         return ct
     
+    def __get_d(self):
+        if self.delta != None: return self.delta
+        return (self.n1 / (self.n1 + 2 * self.n2))
