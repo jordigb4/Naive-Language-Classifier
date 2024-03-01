@@ -91,7 +91,7 @@ class LanguageIdentifier:
         total_ct = self.total_trigrams_corpora[language] 
         not_total_ct = pow(24, 3) - total_ct
         if ct_tr != 0: return ((ct_tr -d) / (total_ct))
-        else: return(((pow(24,3)-not_total_ct)*d)/(total_ct * not_total_ct)) 
+        else: return(((total_ct)*d)/(total_ct * not_total_ct)) 
         
 
     def get_count(self, tr, language):
