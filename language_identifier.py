@@ -24,8 +24,9 @@ class LanguageIdentifier:
                                 Ney, H., U. Essen, and R. Kneser. 1994. On structuring probabilistic dependencies in stochastic language modelling.
                                 Computer Speech and Language, 8:1-38.
         """
-        assert 0 < alpha < 1 #alpha between 0 and 1
-        assert delta is None or 0 < delta < 1 #delta between 0 and 1
+        assert smoothing == 'Lidstone' or smoothing == 'Abs_disc', "Not Available Smoothing"
+        assert 0 < alpha < 1, "Alpha must be in range (0, 1)" #alpha between 0 and 1
+        assert delta is None or 0 < delta < 1, "Delta must be in range (0, 1)" #delta between 0 and 1
 
         self.smoothing = smoothing
         self.languages = ["deu", "eng", "fra", "ita", "nld", "spa"]  #supported languages
