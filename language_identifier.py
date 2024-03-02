@@ -108,9 +108,10 @@ class LanguageIdentifier:
         phrases = preprocessed_test.split("  ")
         predicted = []
         for phrase in phrases:
-            phrase_probs = [(language, self.__likelihood(phrase, language)) for language in self.languages]
-            pred = max(phrase_probs, key = lambda x: x[1])[0]
-            predicted.append(pred)
+            if phrase: #avoid void strings
+                phrase_probs = [(language, self.__likelihood(phrase, language)) for language in self.languages]
+                pred = max(phrase_probs, key = lambda x: x[1])[0]
+                predicted.append(pred)
 
         return np.array(predicted)
 
@@ -193,7 +194,8 @@ class LanguageIdentifier:
         phrases = preprocessed_test.split("  ")
         predicted = []
         for phrase in phrases:
-            phrase_probs = [(language, self.__likelihood(phrase, language)) for language in self.languages]
-            predicted.append(phrase_probs)
+            if phrase: #avoid void strings
+                phrase_probs = [(language, self.__likelihood(phrase, language)) for language in self.languages]
+                predicted.append(phrase_probs)
 
         return predicted
