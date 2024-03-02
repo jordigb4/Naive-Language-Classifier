@@ -174,7 +174,7 @@ class LanguageIdentifier:
         ct = corpora.get(tr, 0) #if not found count is 0
         return ct
 
-    def predict_probs(self,path):
+    def predict_probs(self, path):
         """
         Method to show prediction probabilities of each language for each given sentence.
 
