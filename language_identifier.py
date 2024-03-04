@@ -6,7 +6,7 @@ import warnings
 
 class LanguageIdentifier:
 
-    def __init__(self, smoothing = "Lidstone", alpha = 0.5, delta = None)-> None:
+    def __init__(self) -> None:
         """
             Initialize LanguageIdentifier with provided arguments.
 
@@ -24,20 +24,9 @@ class LanguageIdentifier:
                                 Ney, H., U. Essen, and R. Kneser. 1994. On structuring probabilistic dependencies in stochastic language modelling.
                                 Computer Speech and Language, 8:1-38.
         """
-        assert smoothing == 'Lidstone' or smoothing == 'Abs_disc', "Not Available Smoothing"
-        assert 0 < alpha < 1, "Alpha must be in range (0, 1)" #alpha between 0 and 1
-        assert delta is None or 0 < delta < 1, "Delta must be in range (0, 1)" #delta between 0 and 1
-
-        self.smoothing = smoothing
+        
         self.languages = ["deu", "eng", "fra", "ita", "nld", "spa"]  #supported languages
-
         self.__train()
-
-        if smoothing == "Lidstone":
-            self.alpha = alpha
-
-        if smoothing == "Abs_disc":
-            self.delta = delta if delta else (self.n1 / (self.n1 + 2 * self.n2))
 
     def __train(self):
         """
@@ -89,7 +78,7 @@ class LanguageIdentifier:
             ct += c
         return tr_c, ct
         
-    def identify_language(self, path):
+    def identify_language(self, path, smoothing = "Lidstone", alpha = 0.5, delta = None):
         """
         Method to predict the language/s of given sentences.
 
@@ -98,7 +87,17 @@ class LanguageIdentifier:
         Post-conditions: Returns vector of predictions associated to the sentences on the path file, or to the string associated. 
                         Predictions are in the ISO3 format associated to the language (str).
         """
-        
+        assert smoothing == 'Lidstone' or smoothing == 'Abs_disc', "Not Available Smoothing"
+        assert 0 < alpha < 1, "Alpha must be in range (0, 1)" #alpha between 0 and 1
+        assert delta is None or 0 < delta < 1, "Delta must be in range (0, 1)" #delta between 0 and 1
+
+        self.smoothing = smoothing
+        if self.smoothing == "Lidstone":
+            self.alpha = alpha
+
+        if self.smoothing == "Abs_disc":
+            self.delta = delta if delta else (self.n1 / (self.n1 + 2 * self.n2))
+            
         try:
             preprocessed_test = self.__read_corpora(path)
         except:
