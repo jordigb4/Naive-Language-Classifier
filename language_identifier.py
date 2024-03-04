@@ -8,22 +8,9 @@ class LanguageIdentifier:
 
     def __init__(self) -> None:
         """
-            Initialize LanguageIdentifier with provided arguments.
-
-            Parameters:
-
-            smooting (str): Smoothing method. It must be one of the following:
-                - Lidstone: Lidstone smoothing.
-                - Abs_disc: Absolute discounting smoothing.
-
-            alpha (float): Alpha/Lambda parameter value for Lidstone smoothing. Must be in the range (0,1)
-                           default = 0.5 according to literature.
-
-            delta (float): Delta parameter value for Absolute Discounting smoothing. Must be in range(0,1).
-                           default is computed according to:
-                                Ney, H., U. Essen, and R. Kneser. 1994. On structuring probabilistic dependencies in stochastic language modelling.
-                                Computer Speech and Language, 8:1-38.
+            Initialize LanguageIdentifier, i.e. also train with corpora.
         """
+
         
         self.languages = ["deu", "eng", "fra", "ita", "nld", "spa"]  #supported languages
         self.__train()
@@ -36,7 +23,7 @@ class LanguageIdentifier:
               total trigrams in each language and, for each language the count of each trigram (int,int).
         """
 
-        
+
         self.total_trigrams_corpora = {} #total trigrams counts for each language
         self.trigrams_corpora = {} #trigrams counts for a language
         for language in self.languages:
@@ -82,11 +69,27 @@ class LanguageIdentifier:
         """
         Method to predict the language/s of given sentences.
 
+        Parameters:
+
+            smoothing (str): Smoothing method. It must be one of the following:
+                - Lidstone: Lidstone smoothing.
+                - Abs_disc: Absolute discounting smoothing.
+
+            alpha (float): Alpha/Lambda parameter value for Lidstone smoothing. Must be in the range (0,1)
+                           default = 0.5 according to literature.
+
+            delta (float): Delta parameter value for Absolute Discounting smoothing. Must be in range(0,1).
+                           default is computed according to:
+                                Ney, H., U. Essen, and R. Kneser. 1994. On structuring probabilistic dependencies in stochastic language modelling.
+                                Computer Speech and Language, 8:1-38.
+
         Pre-conditions: Path is a string that represents either a path or a sentence
 
         Post-conditions: Returns vector of predictions associated to the sentences on the path file, or to the string associated. 
                         Predictions are in the ISO3 format associated to the language (str).
         """
+
+
         assert smoothing == 'Lidstone' or smoothing == 'Abs_disc', "Not Available Smoothing"
         assert 0 < alpha < 1, "Alpha must be in range (0, 1)" #alpha between 0 and 1
         assert delta is None or 0 < delta < 1, "Delta must be in range (0, 1)" #delta between 0 and 1
@@ -95,9 +98,9 @@ class LanguageIdentifier:
         if self.smoothing == "Lidstone":
             self.alpha = alpha
 
-        if self.smoothing == "Abs_disc":
+        elif self.smoothing == "Abs_disc":
             self.delta = delta if delta else (self.n1 / (self.n1 + 2 * self.n2))
-            
+
         try:
             preprocessed_test = self.__read_corpora(path)
         except:
