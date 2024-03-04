@@ -33,9 +33,10 @@ def alpha_score(clf: LanguageIdentifier, language:str, alpha: float):
 
 LangId = LanguageIdentifier()
 
-alphas = [0.7, 0.8, 0.9]; acc = 0; best_alpha = None
+alphas = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9]; acc = 0; best_alpha = None
 for alpha in alphas:
     acc_alpha = np.mean([alpha_score(LangId, language, alpha) for language in languages])
     if acc_alpha > acc: 
         best_alpha = alpha
-print(best_alpha)
+
+print(f'The best Lidstone parameter for data in corpora dir. is : {best_alpha}')

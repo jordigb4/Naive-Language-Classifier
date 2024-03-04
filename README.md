@@ -27,6 +27,7 @@
       </ul>
     </li>
     <li><a href="#usage">Usage</a></li>
+    <li><a href="#repo-structures">Repository Structures</a></li>
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#contact">Contact</a></li>
     <li><a href="#acknowledgments">Acknowledgments</a></li>
@@ -74,7 +75,7 @@ from language_identifier import LanguageIdentifier
 # Train classifier
 LangId = LanguageIdentifier()
 
-#Predict phrase
+#Predict phrase or
 pred = LangId.identify_language('The classifier must be used like this', smoothing = 'Lidstone')
 #Predict valid text file
 pred = LangId.identify_language(f"corpora/eng_tst.txt", smoothing = 'Lidstone')
@@ -83,6 +84,22 @@ print(pred)
 ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+## Repository Structures
+
+    .
+    ├── corpora                 # Train, val, and test corpora files (.txt)
+    ├── images                  # Resulting Confusion Matrices
+    ├── Preprocessing           # File with functions to treat raw corpora
+    ├── language_identifier     # MAIN file, with classifier model class
+    ├── test.ipynb              # Test language_identifier accuracy, both Lidstone and Abs. Discounting 
+    ├── wrong_classified.ipynb  # Obtain wrong classified phrases from test corpora
+    ├── all_wrong_*.csv         # Compilation of misclassified phrases
+    ├── foreign_languages.ipynb # Experiment to check potential model BIAS
+    ├── best_alpha.py           # Obtain best Lidstone parameter for data in corpora dir.
+    └── README.md
+
+<p align="right">(<a href="#repo-structures">back to top</a>)</p>
 
 <!-- CONTRIBUTING -->
 ## Contributing
@@ -114,6 +131,6 @@ Project Link: [https://github.com/jordigb4/Naive-Language-Classifier](https://gi
 <!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments
 
-* [Naive Bayes Classifier](https://web.stanford.edu/~jurafsky/slp3/)
+* [Naive Bayes Classifier Paper](https://web.stanford.edu/~jurafsky/slp3/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
