@@ -1,7 +1,7 @@
 from Preprocessing.preprocessing import preprocessing
 from nltk.collocations import TrigramCollocationFinder
 import numpy as np
-from math import log, exp
+from math import log
 import warnings
 
 class LanguageIdentifier:
