@@ -20,4 +20,4 @@ def concatenate_whitespaces(text: str) -> str:
     return re.sub(r'\n','  ', re.sub(r'\t','',text))
 
 def preprocessing(text:str) -> str:
-    return concatenate_whitespaces(reduce_whitespaces(lower(remove_digits(text))))
+    return concatenate_whitespaces(reduce_whitespaces(lower(remove_digits(text)))) 
