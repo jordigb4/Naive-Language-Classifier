@@ -54,7 +54,7 @@ To get a local copy up and running follow these simple example steps.
   ```sh
   pip install nltk
   pip install numpy
-  ``
+  ```
 
 ### Installation
 
