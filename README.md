@@ -61,7 +61,7 @@ To get a local copy up and running follow these simple example steps.
 1. Clone the repo
    ```sh
   git clone https://github.com/jordigb4/Naive-Language-Classifier.git
-   ```
+  ```
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
