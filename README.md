@@ -26,7 +26,9 @@
         <li><a href="#installation">Installation</a></li>
       </ul>
     </li>
+    <li><a href="#directory-structure">Directory Structure</a></li> <!-- Added this line -->
     <li><a href="#usage">Usage</a></li>
+    <li><a href="#roadmap">Roadmap</a></li>
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#contact">Contact</a></li>
     <li><a href="#acknowledgments">Acknowledgments</a></li>
@@ -64,6 +66,21 @@ To get a local copy up and running follow these simple example steps.
   ```
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
+<!-- DIRECTORY STRUCTURE -->
+<details>
+  <summary>Directory Structure</summary>
+  <ul>
+    <li>
+      <a href="#src">/src</a>
+    </li>
+    <li>
+      <a href="#docs">/docs</a>
+    </li>
+    <li>
+      <a href="#readme-md">README.md</a>
+    </li>
+  </ul>
+</details>
 
 <!-- USAGE EXAMPLES -->
 ## Usage
@@ -74,13 +91,28 @@ from language_identifier import LanguageIdentifier
 # Train classifier
 LangId = LanguageIdentifier()
 
-#Predict phrase
+#Predict phrase or
 pred = LangId.identify_language('The classifier must be used like this', smoothing = 'Lidstone')
 #Predict valid text file
 pred = LangId.identify_language(f"corpora/eng_tst.txt", smoothing = 'Lidstone')
 
 print(pred)
 ```
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- ROADMAP -->
+## Roadmap
+
+- [x] Add Changelog
+- [x] Add back to top links
+- [ ] Add Additional Templates w/ Examples
+- [ ] Add "components" document to easily copy & paste sections of the readme
+- [ ] Multi-language Support
+    - [ ] Chinese
+    - [ ] Spanish
+
+See the [open issues](https://github.com/othneildrew/Best-README-Template/issues) for a full list of proposed features (and known issues).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
