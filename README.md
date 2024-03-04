@@ -72,12 +72,12 @@ To get a local copy up and running follow these simple example steps.
 from language_identifier import LanguageIdentifier
 
 # Train classifier
-LangId = LanguageIdentifier(smoothing = 'Lidstone')
+LangId = LanguageIdentifier()
 
 #Predict phrase
-pred = LangId.identify_language('The classifier must be used like this')
+pred = LangId.identify_language('The classifier must be used like this', smoothing = 'Lidstone')
 #Predict valid text file
-pred = LangId.identify_language(f"corpora/eng_tst.txt")
+pred = LangId.identify_language(f"corpora/eng_tst.txt", smoothing = 'Lidstone')
 
 print(pred)
 ```
