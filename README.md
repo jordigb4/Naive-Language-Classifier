@@ -88,7 +88,7 @@ print(pred)
 ## Repository Structures
 
     .
-    ├── corpora                 # Train, val, and test corpora files
+    ├── corpora                 # Train, val, and test corpora files (.txt)
     ├── images                  # Resulting Confusion Matrices
     ├── Preprocessing           # File with functions to treat raw corpora
     ├── language_identifier     # MAIN file, with classifier model class
