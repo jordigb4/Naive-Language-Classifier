@@ -26,7 +26,6 @@
         <li><a href="#installation">Installation</a></li>
       </ul>
     </li>
-    <li><a href="#directory-structure">Directory Structure</a></li> <!-- Added this line -->
     <li><a href="#usage">Usage</a></li>
     <li><a href="#roadmap">Roadmap</a></li>
     <li><a href="#contributing">Contributing</a></li>
@@ -66,21 +65,6 @@ To get a local copy up and running follow these simple example steps.
   ```
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-<!-- DIRECTORY STRUCTURE -->
-<details>
-  <summary>Directory Structure</summary>
-  <ul>
-    <li>
-      <a href="#src">/src</a>
-    </li>
-    <li>
-      <a href="#docs">/docs</a>
-    </li>
-    <li>
-      <a href="#readme-md">README.md</a>
-    </li>
-  </ul>
-</details>
 
 <!-- USAGE EXAMPLES -->
 ## Usage
