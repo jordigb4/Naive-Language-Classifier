@@ -27,7 +27,7 @@
       </ul>
     </li>
     <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
+    <li><a href="#repo-structures">Repository Structures</a></li>
     <li><a href="#contributing">Contributing</a></li>
     <li><a href="#contact">Contact</a></li>
     <li><a href="#acknowledgments">Acknowledgments</a></li>
@@ -84,6 +84,22 @@ print(pred)
 ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+## Repository Structures
+
+    .
+    ├── corpora                 # Train, val, and test corpora files
+    ├── images                  # Resulting Confusion Matrices
+    ├── Preprocessing           # File with functions to treat raw corpora
+    ├── language_identifier     # MAIN file, with classifier model class
+    ├── test.ipynb              # Test language_identifier accuracy, both Lidstone and Abs. Discounting 
+    ├── wrong_classified.ipynb  # Obtain wrong classified phrases from test corpora
+    ├── all_wrong_*.csv         # Compilation of misclassified phrases
+    ├── foreign_languages.ipynb # Experiment to check potential model BIAS
+    ├── best_alpha.py           # Obtain best Lidstone parameter for data in corpora dir.
+    └── README.md
+
+<p align="right">(<a href="#repo-structures">back to top</a>)</p>
 
 <!-- CONTRIBUTING -->
 ## Contributing
