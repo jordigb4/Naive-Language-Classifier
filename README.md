@@ -68,9 +68,19 @@ To get a local copy up and running follow these simple example steps.
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+```python
+from language_identifier import LanguageIdentifier
 
-_For more examples, please refer to the [Documentation](https://example.com)_
+# Train classifier
+LangId = LanguageIdentifier(smoothing = 'Lidstone')
+
+#Predict phrase
+pred = LangId.identify_language('The classifier must be used like this')
+#Predict valid text file
+pred = LangId.identify_language(f"corpora/eng_tst.txt")
+
+print(pred)
+```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -95,7 +105,7 @@ Don't forget to give the project a star! Thanks again!
 
 Your Name - [@your_twitter](https://twitter.com/your_username) - email@example.com
 
-Project Link: [https://github.com/your_username/repo_name](https://github.com/your_username/repo_name)
+Project Link: [https://github.com/jordigb4/Naive-Language-Classifier](https://github.com/jordigb4/Naive-Language-Classifier)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -104,15 +114,6 @@ Project Link: [https://github.com/your_username/repo_name](https://github.com/yo
 <!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments
 
-Use this space to list resources you find helpful and would like to give credit to. I've included a few of my favorites to kick things off!
-
-* [Choose an Open Source License](https://choosealicense.com)
-* [GitHub Emoji Cheat Sheet](https://www.webpagefx.com/tools/emoji-cheat-sheet)
-* [Malven's Flexbox Cheatsheet](https://flexbox.malven.co/)
-* [Malven's Grid Cheatsheet](https://grid.malven.co/)
-* [Img Shields](https://shields.io)
-* [GitHub Pages](https://pages.github.com)
-* [Font Awesome](https://fontawesome.com)
-* [React Icons](https://react-icons.github.io/react-icons/search)
+* [Naive Bayes Classifier](https://web.stanford.edu/~jurafsky/slp3/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
