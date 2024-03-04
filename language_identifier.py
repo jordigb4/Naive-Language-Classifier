@@ -60,7 +60,7 @@ class LanguageIdentifier:
 
         Pre-conditions: path is a valid path to a readable file.
 
-        Post-conditions: Returns the preprocessed file as raw text (str).
+        Post-conditions: Returns the preprocessed file as raw text (str). 
         """
 
         with open(path, 'r', encoding='utf-8') as file:
